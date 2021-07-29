@@ -1,0 +1,16 @@
+name: neos_bottom_navigation
+description: A bottom navigation bar widget that is made to be customized
+version: 0.1.0
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter: 
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
