@@ -1,7 +1,3 @@
-/*
-Initial development sponsored by Zaynin Pty (Ltd)
-*/
-
 import 'package:flutter/material.dart';
 import 'package:neos_bottom_navigation/styles/color_style.dart';
 import 'neos_bottom_navigation_item.dart';
@@ -16,7 +12,7 @@ class NeosBottomNavigation extends StatefulWidget {
     this.selectedItemColor = const Color(0XFFFFFFFF),
     this.unselectedItemColor = const Color(0XFFFFFFFF),
     required this.onTap,
-    this.setIndex = 0,
+    this.setIndex,
     this.selectedNavColor = ColorStyle.defaultGradient,
     this.activeColor = const Color(0xFF039BE5),
     this.inActiveColor = const Color(0xFF01579B),
@@ -30,7 +26,7 @@ class NeosBottomNavigation extends StatefulWidget {
   final Color selectedItemColor;
   final Color unselectedItemColor;
   final ValueChanged<int> onTap;
-  final int setIndex;
+  final int? setIndex;
   final Gradient selectedNavColor;
   final Color activeColor;
   final Color inActiveColor;
@@ -43,6 +39,11 @@ class _NeosBottomNavigationState extends State<NeosBottomNavigation> {
 
   @override
   void initState() {
+    setState(() {
+      if (widget.setIndex != null) {
+        _currentIndex = widget.setIndex!;
+      }
+    });
     super.initState();
   }
 

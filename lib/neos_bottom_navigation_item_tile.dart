@@ -94,14 +94,16 @@ class _NeosBottomNavigationItemTileState extends State<NeosBottomNavigationItemT
                   widget.currentIndex == widget.index ? widget.activeColor : widget.inActiveColor,
             ),
             widget.currentIndex == widget.index
-                ? Container()
+                ? const SizedBox()
                 : Flexible(
                     child: Text(
                       // tên button bottom Navigation bar
                       widget.item.title,
                       style: TextStyle(
-                          color: widget.inActiveColor, fontWeight: FontWeight.bold, fontSize: 12),
-
+                        color: widget.inActiveColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   )

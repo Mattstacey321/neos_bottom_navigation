@@ -1,6 +1,3 @@
-/*
-Initial development sponsored by Zaynin Pty (Ltd)
-*/
 library neos_bottom_navigation;
 
 import 'package:flutter/material.dart';
