@@ -3,18 +3,20 @@ import 'neos_bottom_navigation_item.dart';
 
 class NeosBottomNavigationItemTile extends StatefulWidget {
   NeosBottomNavigationItemTile(
-      this.item,
-      this.selectedItemColor,
-      this.unselectedItemColor,
-      this.itemOutlineColor,
-      this.backgroundColor,
-      this.itemBackgroudnColor,
-      this.index,
-      this.onChanged,
-      this.currentIndex,
-      this.selectedNavColor,
-      this.activeColor,
-      this.inActiveColor);
+    this.item,
+    this.selectedItemColor,
+    this.unselectedItemColor,
+    this.itemOutlineColor,
+    this.backgroundColor,
+    this.itemBackgroudnColor,
+    this.index,
+    this.onChanged,
+    this.currentIndex,
+    this.selectedNavColor,
+    this.activeColor,
+    this.inActiveColor,
+    this.routeName,
+  );
   final NeosBottomNavigationItem item;
   final Color selectedItemColor;
   final Color unselectedItemColor;
@@ -26,7 +28,8 @@ class NeosBottomNavigationItemTile extends StatefulWidget {
   final Color inActiveColor;
 
   final int index;
-  final ValueChanged<int> onChanged;
+  final String? routeName;
+  final void Function(int, String?) onChanged;
 
   final int currentIndex;
   @override
@@ -159,6 +162,6 @@ class _NeosBottomNavigationItemTileState extends State<NeosBottomNavigationItemT
   }
 
   void selectItem() {
-    widget.onChanged(widget.index);
+    widget.onChanged(widget.index, widget.routeName);
   }
 }

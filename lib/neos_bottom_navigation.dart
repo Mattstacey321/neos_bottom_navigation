@@ -25,7 +25,7 @@ class NeosBottomNavigation extends StatefulWidget {
   final Color itemOutlineColor;
   final Color selectedItemColor;
   final Color unselectedItemColor;
-  final ValueChanged<int> onTap;
+  final void Function(int index, String? routeName) onTap;
   final int? setIndex;
   final Gradient selectedNavColor;
   final Color activeColor;
@@ -36,12 +36,14 @@ class NeosBottomNavigation extends StatefulWidget {
 
 class _NeosBottomNavigationState extends State<NeosBottomNavigation> {
   int _currentIndex = 0;
+  String? _routeName;
 
   @override
   void initState() {
     setState(() {
       if (widget.setIndex != null) {
         _currentIndex = widget.setIndex!;
+        _routeName = widget.items[_currentIndex].routeName;
       }
     });
     super.initState();
@@ -101,29 +103,32 @@ class _NeosBottomNavigationState extends State<NeosBottomNavigation> {
           children: widget.items.map((item) {
             int index = widget.items.indexOf(item);
             return NeosBottomNavigationItemTile(
-                item,
-                widget.selectedItemColor,
-                widget.unselectedItemColor,
-                widget.itemOutlineColor,
-                widget.backgroundColor,
-                widget.itemBackgroudnColor,
-                index,
-                _changeCurrentIndex,
-                _currentIndex,
-                widget.selectedNavColor,
-                widget.activeColor,
-                widget.inActiveColor);
+              item,
+              widget.selectedItemColor,
+              widget.unselectedItemColor,
+              widget.itemOutlineColor,
+              widget.backgroundColor,
+              widget.itemBackgroudnColor,
+              index,
+              _changeCurrentIndex,
+              _currentIndex,
+              widget.selectedNavColor,
+              widget.activeColor,
+              widget.inActiveColor,
+              _routeName,
+            );
           }).toList(),
         ),
       ),
     );
   }
 
-  void _changeCurrentIndex(int index) {
+  void _changeCurrentIndex(int index, String? routeName) {
     setState(() {
       _currentIndex = index;
+      _routeName = routeName;
     });
 
-    widget.onTap(_currentIndex);
+    widget.onTap(_currentIndex, _routeName);
   }
 }
