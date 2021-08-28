@@ -102,6 +102,7 @@ class _NeosBottomNavigationState extends State<NeosBottomNavigation> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: widget.items.map((item) {
             int index = widget.items.indexOf(item);
+            String? routeName = widget.items[index].routeName;
             return NeosBottomNavigationItemTile(
               item,
               widget.selectedItemColor,
@@ -115,7 +116,7 @@ class _NeosBottomNavigationState extends State<NeosBottomNavigation> {
               widget.selectedNavColor,
               widget.activeColor,
               widget.inActiveColor,
-              _routeName,
+              routeName,
             );
           }).toList(),
         ),
